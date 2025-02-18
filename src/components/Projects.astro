@@ -1,0 +1,60 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+import { fetchRepos, fetchLanguages } from "../utils/github";
+
+const username = "jonathon-hackbarth";
+const token = import.meta.env.GITHUB_TOKEN;
+
+let projects = [];
+try {
+  const repos = await fetchRepos(username, token);
+  projects = await Promise.all(
+    repos.map(async (repo) => {
+      const languages = await fetchLanguages(repo.languages_url, token);
+      const totalBytes = Object.values(languages).reduce((acc, bytes) => acc + bytes, 0);
+      const languagePercentages = Object.entries(languages).map(([lang, bytes]) => ({
+        name: lang,
+        percentage: ((bytes / totalBytes) * 100).toFixed(1),
+      }));
+
+      return {
+        ...repo,
+        languages: languagePercentages,
+      };
+    })
+  );
+} catch (error) {
+  console.error("Error fetching GitHub data:", error);
+}
+---
+
+<section class="projects">
+  <h2>Recent Projects</h2>
+  <div class="project-list">
+    {projects.map((project) => (
+      <ProjectCard {...project} />
+    ))}
+  </div>
+</section>
+
+<style>
+  .projects {
+    padding: 4rem 2rem; /* Increased vertical padding */
+    background-color: #f8f9fa;
+  }
+
+  .project-list {
+    max-width: 1200px; /* Limit maximum width */
+    margin: 0 auto; /* Center the grid */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem; /* Increased gap between cards */
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+  }
+</style>
