@@ -1,26 +1,31 @@
 ---
 import ProjectCard from "./ProjectCard.astro";
+import { fetchRepos, fetchLanguages } from "../utils/github";
 
-const projects = [
-  {
-    name: "Project 1",
-    description: "A brief description of project 1.",
-    html_url: "http://example.com/project1",
-    languages: [{ name: "JavaScript", percentage: "60" }, { name: "HTML", percentage: "40" }],
-  },
-  {
-    name: "Project 2",
-    description: "A brief description of project 2.",
-    html_url: "http://example.com/project2",
-    languages: [{ name: "Python", percentage: "70" }, { name: "CSS", percentage: "30" }],
-  },
-  {
-    name: "Project 3",
-    description: "A brief description of project 3.",
-    html_url: "http://example.com/project3",
-    languages: [{ name: "TypeScript", percentage: "80" }, { name: "Astro", percentage: "20" }],
-  },
-];
+const username = "jonathon-hackbarth";
+const token = import.meta.env.GH_TOKEN;
+
+let projects = [];
+try {
+  const repos = await fetchRepos(username, token);
+  projects = await Promise.all(
+    repos.map(async (repo) => {
+      const languages = await fetchLanguages(repo.languages_url, token);
+      const totalBytes = Object.values(languages).reduce((acc, bytes) => acc + bytes, 0);
+      const languagePercentages = Object.entries(languages).map(([lang, bytes]) => ({
+        name: lang,
+        percentage: ((bytes / totalBytes) * 100).toFixed(1),
+      }));
+
+      return {
+        ...repo,
+        languages: languagePercentages,
+      };
+    })
+  );
+} catch (error) {
+  console.error("Error fetching GitHub data:", error);
+}
 ---
 
 <section id="projects" class="py-16">
