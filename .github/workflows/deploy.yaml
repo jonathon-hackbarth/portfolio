@@ -36,6 +36,6 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         id: deployment
         uses: actions/deploy-pages@v4
