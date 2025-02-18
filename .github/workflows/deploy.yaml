@@ -29,11 +29,12 @@ jobs:
 
   deploy:
     needs: build
+    secrets:
+      access-token: ${{ secrets.GH_TOKEN }}
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-      token: ${{ secrets.GH_TOKEN }}
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
