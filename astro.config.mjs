@@ -7,6 +7,7 @@ dotenv.config();
 
 // https://astro.build/config
 export default defineConfig({
+    base: '/portfolio/', // IMPORTANT: Add a trailing slash
     vite: {
         plugins: [tailwindcss()],
     },
