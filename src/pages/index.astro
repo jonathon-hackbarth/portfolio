@@ -6,13 +6,18 @@ import Hero from '../components/Hero.astro';
 import Projects from '../components/Projects.astro';
 ---
 
-<html lang="en">
-<head>
-  <title>Jonathon Hackbarth</title>
-</head>
-<body class="font-sans antialiased">
-  <NavBar />
-  <Hero />
-  <Projects />
-</body>
-</html>
+<Layout title="Jonathon Hackbarth">
+  <div class="min-h-screen bg-gray-50">
+    <NavBar />
+    <main class="pt-16 flex flex-col items-center">
+      <div class="max-w-5xl">
+        <Hero />
+      </div>
+      <div class="bg-gray-200 w-full">
+        <div class="max-w-5xl mx-auto">
+        <Projects />
+        </div>
+      </div>
+    </main>
+  </div>
+</Layout>

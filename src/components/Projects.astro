@@ -28,7 +28,7 @@ try {
 }
 ---
 
-<section class="projects">
+<section id="projects" class="py-16">
   <h2>Recent Projects</h2>
   <div class="project-list">
     {projects.map((project) => (
@@ -40,15 +40,21 @@ try {
 <style>
   .projects {
     padding: 4rem 2rem; /* Increased vertical padding */
-    background-color: #f8f9fa;
   }
 
   .project-list {
-    max-width: 1200px; /* Limit maximum width */
-    margin: 0 auto; /* Center the grid */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem; /* Increased gap between cards */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    .project-list {
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
   }
 
   h2 {
