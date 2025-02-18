@@ -32,7 +32,7 @@ const updatedTime = new Date(pushed_at).toLocaleString("en-US", {
     {languages?.length > 0 && (
       <div class="card-languages">
         <div class="language-list">
-          {languages.map(({ name, percentage }) => (
+          {languages.map(({ name, percentage }: { name: string; percentage: string }) => (
             <div class="language-card">
               <span class="language-name">{name}</span>
               <span class="language-percentage">{percentage}%</span>

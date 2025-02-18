@@ -9,12 +9,12 @@ let projects = [];
 try {
   const repos = await fetchRepos(username, token);
   projects = await Promise.all(
-    repos.map(async (repo) => {
+    repos.map(async (repo: any) => {
       const languages = await fetchLanguages(repo.languages_url, token);
-      const totalBytes = Object.values(languages).reduce((acc, bytes) => acc + bytes, 0);
+      const totalBytes = (Object.values(languages) as number[]).reduce((acc: number, bytes: number) => acc + bytes, 0);
       const languagePercentages = Object.entries(languages).map(([lang, bytes]) => ({
         name: lang,
-        percentage: ((bytes / totalBytes) * 100).toFixed(1),
+        percentage: ((Number(bytes) / totalBytes) * 100).toFixed(1),
       }));
 
       return {
