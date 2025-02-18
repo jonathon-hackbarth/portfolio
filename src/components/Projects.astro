@@ -3,7 +3,7 @@ import ProjectCard from "./ProjectCard.astro";
 import { fetchRepos, fetchLanguages } from "../utils/github";
 
 const username = "jonathon-hackbarth";
-const token = import.meta.env.GITHUB_TOKEN;
+const token = import.meta.env.GH_TOKEN;
 
 let projects = [];
 try {
