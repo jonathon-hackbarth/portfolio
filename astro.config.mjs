@@ -2,6 +2,7 @@
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import dotenv from "dotenv";
+import react from '@astrojs/react';
 
 dotenv.config();
 
@@ -12,4 +13,5 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  integrations: [react()],
 });

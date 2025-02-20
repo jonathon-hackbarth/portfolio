@@ -1,47 +1,8 @@
 ---
-import ProjectCard from "./ProjectCard.astro";
-import { fetchRepos, fetchLanguages } from "../utils/github";
-
-const username = "jonathon-hackbarth";
-const token = import.meta.env.GH_TOKEN;
-
-let projects = [];
-try {
-  const repos = await fetchRepos(username, token);
-  projects = await Promise.all(
-    repos.map(async (repo: any) => {
-      const languages = await fetchLanguages(repo.languages_url, token);
-      const totalBytes = (Object.values(languages) as number[]).reduce(
-        (acc: number, bytes: number) => acc + bytes,
-        0
-      );
-      const languagePercentages = Object.entries(languages).map(
-        ([lang, bytes]) => ({
-          name: lang,
-          percentage: ((Number(bytes) / totalBytes) * 100).toFixed(1),
-        })
-      );
-
-      return {
-        ...repo,
-        languages: languagePercentages,
-      };
-    })
-  );
-} catch (error) {
-  console.error("Error fetching GitHub data:", error);
-}
+import ProjectsIsland from "./ProjectsIsland";
 ---
 
 <section id="projects" class="projects-section">
   <h2 class="projects-title">Recent Projects</h2>
-  <div class="projects-grid">
-    {
-      projects.map((project) => (
-        <div class="project-wrapper">
-          <ProjectCard {...project} />
-        </div>
-      ))
-    }
-  </div>
+  <ProjectsIsland client:load />
 </section>
