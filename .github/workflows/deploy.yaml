@@ -32,6 +32,7 @@ jobs:
   deploy:
     env:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      PUBLIC_GH_TOKEN: ${{ secrets.PUBLIC_GH_TOKEN }}
     needs: build
     runs-on: ubuntu-latest
     environment:
