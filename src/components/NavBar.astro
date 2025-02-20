@@ -1,14 +1,13 @@
 ---
 import "../styles/global.css";
 const navItems = [
-  { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
   { href: "#projects", label: "Projects" },
   { href: "#contact", label: "Contact" },
 ];
 ---
 
-<nav class="navbar padding-top: env(safe-area-inset-top)">
+<nav class="navbar">
   <ul class="nav-list">
     {
       navItems.map((item) => (
