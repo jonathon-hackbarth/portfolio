@@ -66,7 +66,12 @@ const updatedTime = new Date(pushed_at).toLocaleString("en-US", {
     }
 
     <div class="project-footer">
-      <a href={svn_url} target="_blank" rel="noopener noreferrer">
+      <a
+        href={svn_url}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub Repository"
+      >
         <i class="fa-brands fa-github github-icon"></i>
       </a>
       <span class="update-time">Updated on {updatedTime}</span>

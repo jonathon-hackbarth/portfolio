@@ -14,15 +14,15 @@
   }
 
   .hero-section {
-    @apply flex flex-col-reverse md:flex-row items-center justify-between px-8 py-16 bg-gray-50;
+    @apply flex flex-col-reverse md:flex-row items-center gap-10 justify-center px-8 py-16;
   }
 
   .hero-content {
-    @apply text-center md:text-left mt-8 md:mt-0 p-10;
+    @apply w-100;
   }
 
   .hero-title {
-    @apply text-4xl font-bold mb-4;
+    @apply text-4xl font-bold;
   }
 
   .hero-description {
@@ -30,11 +30,19 @@
   }
 
   .hero-button {
-    @apply inline-block bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600;
+    @apply inline-block py-2 px-4 rounded;
+  }
+
+  .hero-button-blue {
+    @apply bg-blue-600 text-white hover:opacity-90;
+  }
+
+  .hero-button-grey {
+    @apply bg-gray-200 text-gray-700 hover:opacity-90;
   }
 
   .hero-image-container {
-    @apply flex justify-center p-10;
+    @apply flex justify-center;
   }
 
   .hero-image {
