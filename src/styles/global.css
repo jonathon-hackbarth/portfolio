@@ -1,1 +1,19 @@
 @import "tailwindcss";
+
+@layer components {
+  .navbar {
+    @apply fixed top-0 left-0 w-full z-40 flex justify-between items-center px-4 py-2 bg-white/90 backdrop-blur-sm shadow-sm;
+  }
+
+  .nav-home-link {
+    @apply text-base text-gray-600 transition-colors duration-150 ease-in-out hover:text-red-600 no-underline;
+  }
+
+  .nav-list {
+    @apply flex gap-4 flex-wrap justify-end list-none p-0 m-0;
+  }
+
+  .nav-link {
+    @apply text-gray-600 no-underline transition-colors duration-150 ease-in-out hover:text-red-600;
+  }
+}

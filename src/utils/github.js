@@ -7,7 +7,10 @@ export async function fetchRepos(username, token) {
     Accept: "application/vnd.github.v3+json",
   };
 
-  const response = await fetch(`${GITHUB_API_URL}/users/${username}/repos?sort=updated&direction=desc`, { headers });
+  const response = await fetch(
+    `${GITHUB_API_URL}/users/${username}/repos?sort=updated&direction=desc`,
+    { headers }
+  );
   if (!response.ok) {
     throw new Error("Failed to fetch repositories");
   }

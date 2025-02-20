@@ -11,11 +11,16 @@ try {
   projects = await Promise.all(
     repos.map(async (repo: any) => {
       const languages = await fetchLanguages(repo.languages_url, token);
-      const totalBytes = (Object.values(languages) as number[]).reduce((acc: number, bytes: number) => acc + bytes, 0);
-      const languagePercentages = Object.entries(languages).map(([lang, bytes]) => ({
-        name: lang,
-        percentage: ((Number(bytes) / totalBytes) * 100).toFixed(1),
-      }));
+      const totalBytes = (Object.values(languages) as number[]).reduce(
+        (acc: number, bytes: number) => acc + bytes,
+        0
+      );
+      const languagePercentages = Object.entries(languages).map(
+        ([lang, bytes]) => ({
+          name: lang,
+          percentage: ((Number(bytes) / totalBytes) * 100).toFixed(1),
+        })
+      );
 
       return {
         ...repo,
@@ -31,9 +36,7 @@ try {
 <section id="projects" class="py-16">
   <h2>Recent Projects</h2>
   <div class="project-list">
-    {projects.map((project) => (
-      <ProjectCard {...project} />
-    ))}
+    {projects.map((project) => <ProjectCard {...project} />)}
   </div>
 </section>
 

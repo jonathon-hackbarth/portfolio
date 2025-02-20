@@ -1,35 +1,24 @@
 ---
-import styles from '../styles/NavBar.module.css';
-
+import "../styles/global.css";
 const navItems = [
-  { href: "#about", label: "About", shortLabel: "A" },
-  { href: "#projects", label: "Projects", shortLabel: "P" },
-  { href: "#contact", label: "Contact", shortLabel: "C" }
+  { href: "#about", label: "About" },
+  { href: "#projects", label: "Projects" },
+  { href: "#contact", label: "Contact" },
 ];
 ---
 
-<nav class={styles.nav}>
-  <a href="/" class={styles.homeLink}>
-    Home
-  </a>
-  
-  <ul class={`${styles.menu} space-x-8`}>
-    {navItems.map(item => (
-      <li>
-        <a href={item.href} class={styles.menuLink}>
-          {item.label}
-        </a>
-      </li>
-    ))}
+<nav class="navbar">
+  <a href="#" class="nav-link"> Home </a>
+
+  <ul class="nav-list">
+    {
+      navItems.map((item) => (
+        <li class="mb-0">
+          <a href={item.href} class="nav-link">
+            {item.label}
+          </a>
+        </li>
+      ))
+    }
   </ul>
 </nav>
-
-<style>
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  :target {
-    scroll-margin-top: 5rem;
-  }
-</style>
