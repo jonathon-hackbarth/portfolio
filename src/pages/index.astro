@@ -9,18 +9,14 @@ import Projects from "../components/Projects.astro";
 <Layout title="Jonathon Hackbarth">
   <div class="min-h-screen bg-gray-50">
     <NavBar />
-    <main class="w-full mx-auto">
-      <section class="w-full bg-gray-50">
-        <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Hero />
-        </section>
+    <main class="bg-gray-50 w-full mx-auto">
+      <section class="w-full mx-auto px-4 sm:px-6 lg:px-8">
+        <Hero />
       </section>
 
-      <section class="w-full bg-gray-200">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Projects />
-        </div>
-      </section>
+      <div class="bg-gray-300 w-full mx-auto px-4 sm:px-6 lg:px-8">
+        <Projects />
+      </div>
     </main>
   </div>
 </Layout>

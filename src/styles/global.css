@@ -1,25 +1,26 @@
 @import "tailwindcss";
 
 @layer components {
+  /* Navbar */
   .navbar {
     @apply fixed top-0 left-0 w-full z-40 flex justify-between items-center px-4 py-2 bg-white/90 backdrop-blur-sm shadow-sm;
-    padding-top: max(0.5rem, env(safe-area-inset-top));
   }
 
   .nav-list {
-    @apply w-5xl mx-auto flex gap-4 flex-wrap justify-start list-none p-0 m-0;
+    @apply w-full mx-auto flex gap-4 flex-wrap justify-start list-none px-0 m-0;
   }
 
   .nav-link {
-    @apply text-gray-600 no-underline transition-colors duration-150 ease-in-out hover:text-red-600;
+    @apply text-gray-600 no-underline transition-colors duration-150 ease-in-out hover:text-blue-600;
   }
 
+  /* Hero section */
   .hero-section {
     @apply flex flex-col-reverse md:flex-row items-center gap-10 justify-center px-8 py-16;
   }
 
   .hero-content {
-    @apply w-100;
+    @apply w-100 text-center;
   }
 
   .hero-title {
@@ -30,16 +31,20 @@
     @apply text-gray-600 mb-6;
   }
 
+  .hero-button-container {
+    @apply flex gap-4 justify-center;
+  }
+
   .hero-button {
     @apply inline-block py-2 px-4 rounded;
   }
 
   .hero-button-blue {
-    @apply bg-blue-600 text-white hover:opacity-90;
+    @apply bg-blue-600 text-white hover:opacity-90 transition-opacity;
   }
 
   .hero-button-grey {
-    @apply bg-gray-200 text-gray-700 hover:opacity-90;
+    @apply bg-gray-200 text-gray-700 hover:opacity-90 transition-opacity;
   }
 
   .hero-image-container {
@@ -48,6 +53,23 @@
 
   .hero-image {
     @apply rounded-full w-48 h-48 object-cover shadow-lg min-w-[200px];
+  }
+
+  /* Projects section */
+  .projects-section {
+    @apply py-16;
+  }
+
+  .projects-title {
+    @apply text-center text-4xl font-bold mb-12;
+  }
+
+  .projects-grid {
+    @apply flex flex-wrap justify-center gap-8 mx-auto px-8;
+  }
+
+  .project-wrapper {
+    @apply w-100;
   }
 
   .project-card {
@@ -108,21 +130,5 @@
 
   .update-time {
     @apply italic ml-4;
-  }
-
-  .projects-section {
-    @apply py-16;
-  }
-
-  .projects-title {
-    @apply text-center text-4xl font-bold mb-12;
-  }
-
-  .projects-grid {
-    @apply flex flex-wrap justify-center gap-8 max-w-5xl mx-auto px-8;
-  }
-
-  .project-wrapper {
-    @apply w-100;
   }
 }
